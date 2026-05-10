@@ -1,0 +1,24 @@
+import requests
+import json
+from datetime import datetime
+
+try:
+    response = requests.get("https://api.coinbase.com/v2/prices/BTC-EUR/spot")
+    response.raise_for_status()
+    data = response.json()
+    prijs = data["data"]["amount"]
+    print(f"BTC prijs: €{prijs}")
+except Exception as e:
+    print(f"Fout: {e}")
+
+entries = []
+tijd = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+entry = {"prijs": prijs, "tijd": tijd}
+entries.append(entry)
+
+with open("tracker.json", "w") as BTC_tracker:
+    json.dump(entries, BTC_tracker)
+
+with open("tracker.json", "r") as BTC_tracker:
+    inhoud = json.load(BTC_tracker)
+    print(inhoud)

@@ -1,0 +1,107 @@
+name = "Hamza"
+age = 25
+Religion = "Islam"
+My_Religion = "Moslim"
+Status = "Volwassen"
+My_status = "Adult"
+hobbies = ["gym", "coding", "investeren", "gaming"]
+
+
+def profiel():
+    print (" == Mijn Profiel ==")
+    print (f"Naam: {name}")
+    print (f"Leeftijd: {age}")
+    print (f"Mijn Religieuze profiel is de {Religion}")
+
+    if age >= 18:
+        print(name, " is ", Status)
+    elif age >= 13:
+        print ("Teenager")
+    else: print("Minor")
+
+    for Hobies in hobbies:
+        print(f"Mijn hobbies zijn: {hobbies}") 
+        
+profiel()
+
+with open("profiel.txt", "w") as bestand:
+    bestand.write("Salam\n")
+
+with open("profiel.txt","r") as bestand:
+    content = bestand.read()
+    print (content)
+
+with open("profiel.txt","w") as bestand:
+    bestand.write(f"Mijn naam is: "+name+"\n")
+    bestand.write(f"Ik ben "+(str(age))+" jaar oud"+"\n")
+    bestand.write(f"Ik ben "+My_Religion+"\n")
+    bestand.write(f"Im fluent in English, and I am an "+My_status+"\n")
+    bestand.write(f"These are my hobby's: ""\n")
+    for hobby in hobbies:
+        bestand.write(hobby + "\n")
+
+with open("profiel.txt","r") as bestand:
+    content = bestand.read()
+    print (content)
+
+
+class person:
+    def __init__(self, name , age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        print(f"Salam, ik ben {self.name}\n")
+
+p = person ("Hamza", 25)
+p.greet()
+
+class persoon_1: 
+    def __init__(self, name, age, My_Religion):
+        self.name = name
+        self.age = age
+        self.religion = My_Religion
+
+    
+    def introduce (self):
+        print(f"Ik ben, {self.name}, {self.age} jaar oud en ik ben {self.religion}\n")
+    
+    def is_adult(self):
+        if self.age >= 18:
+            print (f"Is {self.name} volwassen?")
+            return True
+        else:
+            print (f"Is {self.name} volwassen?")
+            return False
+        
+    def afsluit(self):
+
+        print(f"Names {self.name}, wij hopen dat jij een goeie offerfeest hebt.\n")
+
+class my_religion:
+    def __init__(self, My_Religion):
+        self.religion = My_Religion
+    
+    def introduce(self):
+        print(f"Hey dit is mijn eigen geschreven code zonder Claude of andere AI, hiermee laat ik zien dat ik de principes van classes begrijp. En ik ben: {self.religion}")
+    
+
+
+r = my_religion("Moslim")
+r.introduce() 
+
+p1 = persoon_1("Hamza", 25, "Islam")
+p2 = persoon_1("Omar", 15, "Islam")
+p3 = persoon_1("Hakim", 33, "Islam")
+
+p1.introduce()
+p2.introduce()
+p3.introduce()
+
+p1.afsluit()
+
+print(p1.is_adult())
+print(p2.is_adult())
+print(p3.is_adult())
+
+
