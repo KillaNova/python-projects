@@ -1,0 +1,24 @@
+[
+  {
+    "name": "JSONPlaceholder",
+    "url": "https://jsonplaceholder.typicode.com/todos/1",
+    "method": "GET",
+    "expected_status": 200,
+    "timeout_seconds": 5,
+    "alert_on_slow_ms": 2000
+  },
+  {
+    "name": "HTTPBin POST",
+    "url": "https://httpbin.org/post",
+    "method": "POST",
+    "body": {
+      "key": "value"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "expected_status": 200,
+    "timeout_seconds": 5,
+    "alert_on_slow_ms": 2000
+  }
+]

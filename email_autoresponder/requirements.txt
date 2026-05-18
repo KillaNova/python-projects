@@ -1,0 +1,1 @@
+# stdlib only (imaplib, smtplib, email) — no extra installs needed

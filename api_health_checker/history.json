@@ -1,0 +1,26 @@
+[
+  {
+    "name": "JSONPlaceholder",
+    "url": "https://jsonplaceholder.typicode.com/todos/1",
+    "method": "GET",
+    "timestamp": "2026-05-18T10:40:20.077265",
+    "status": 403,
+    "response_ms": 65.7,
+    "ok": false,
+    "alerts": [
+      "Status 403 != expected 200"
+    ]
+  },
+  {
+    "name": "HTTPBin POST",
+    "url": "https://httpbin.org/post",
+    "method": "POST",
+    "timestamp": "2026-05-18T10:40:20.144109",
+    "status": 403,
+    "response_ms": 46.0,
+    "ok": false,
+    "alerts": [
+      "Status 403 != expected 200"
+    ]
+  }
+]
