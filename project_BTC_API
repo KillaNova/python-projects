@@ -3,22 +3,41 @@ import json
 from datetime import datetime
 
 try:
-    response = requests.get("https://api.coinbase.com/v2/prices/BTC-EUR/spot")
+    response = requests.get("https://api.coinbase.com/v2/prices/BTC-EUR/spot", timeout=10)
     response.raise_for_status()
     data = response.json()
     prijs = data["data"]["amount"]
     print(f"BTC prijs: €{prijs}")
-except Exception as e:
-    print(f"Fout: {e}")
+except requests.exceptions.ConnectionError:
+    print("Fout: Geen internetverbinding.")
+    raise SystemExit(1)
+except requests.exceptions.Timeout:
+    print("Fout: Verzoek duurde te lang (timeout).")
+    raise SystemExit(1)
+except requests.exceptions.HTTPError as e:
+    print(f"Fout: API gaf een foutmelding: {e}")
+    raise SystemExit(1)
+except (KeyError, ValueError):
+    print("Fout: Onverwacht antwoord van de API.")
+    raise SystemExit(1)
 
-entries = []
 tijd = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 entry = {"prijs": prijs, "tijd": tijd}
+
+try:
+    with open("tracker.json", "r") as BTC_tracker:
+        entries = json.load(BTC_tracker)
+except FileNotFoundError:
+    entries = []
+except json.JSONDecodeError:
+    print("Waarschuwing: tracker.json was onleesbaar, bestand wordt opnieuw aangemaakt.")
+    entries = []
+
 entries.append(entry)
 
-with open("tracker.json", "w") as BTC_tracker:
-    json.dump(entries, BTC_tracker)
-
-with open("tracker.json", "r") as BTC_tracker:
-    inhoud = json.load(BTC_tracker)
-    print(inhoud)
+try:
+    with open("tracker.json", "w") as BTC_tracker:
+        json.dump(entries, BTC_tracker)
+    print(entries)
+except OSError as e:
+    print(f"Fout: Kon tracker.json niet opslaan: {e}")
