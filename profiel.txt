@@ -1,9 +1,8 @@
-Mijn naam is: Hamza
-Ik ben 25 jaar oud
-Ik ben Moslim
-Im fluent in English, and I am an Adult
-These are my hobby's: 
-gym
-coding
-investeren
-gaming
+Naam: Demo Gebruiker
+Leeftijd: 30
+Woonplaats: Nijmegen
+Talen: Nederlands, Engels
+Hobby's:
+lezen
+sporten
+programmeren
